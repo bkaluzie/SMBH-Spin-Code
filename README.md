@@ -1,3 +1,9 @@
-Part of a research project to study SMBH spin.
+Part of a research project to study SMBH spin. <br>
 spins.py creates a table of spins and checks that interpolation is accurate to 2 decimal places;
-spindatagen.py creates a spin distribution from the spin tables
+spindatagen.py creates a spin distribution from the spin tables. <br>
+
+A major difficulty with this project was getting the code to run quickly. Python slows down for loops, but due to the iterative nature of this code, I couldn't cut them out entirely. Thus, one script generates tables to make the iteration go much faster, as the spin is not calculated each time. Instead, it is either drawn from the table or interpolated in. This way, I can quickly generate a spin distribution for a given starting mass and ΔM. It is important to note that ΔM/10^6 Msun should not be less than 0.001 (that is, ΔM should not be less than 10^3 Msun) because the table has a lower limit on fractional mass change of 0.001. Extrapolation to mass fractions below this would not necessarily be reliable. <br>
+
+My black holes are grown under the assumptions that growth is only happening via accretion (no mergers) and that accretion happens with disks of mass ΔM, with each accretion disk independently randomly oriented prograde or retrograde with respect to the spin of the SMBH. All black holes are grown to a total mass of 10^6 Msun. Smaller values of ΔM therefore lead to more accretion events, which, due to their random orientation, should spin down the SMBH. Preliminary distributions support this. <br>
+
+Further research will be done to determine the underlying continuous probability distribution of spins for a given starting mass and ΔM (using kernel density estimation). Comparisons will be made between these distributions and generated spin data to estimate starting mass and ΔM from a distribution using Bayesian statistics. Once the distributions can reliably return the correct starting mass and ΔM, real SMBH spins will be analyzed. 
